@@ -17,14 +17,14 @@ Each endpoint supports the following payloads. Note the http clients using the e
 authenticated session using the /login/ endpoint before other end points can be used
 
 /login/
-========
+-------
 
 /orders/
-========
+--------
 
 /products/
-==========
+----------
 
 /inventory/
-===========
+-----------
 
