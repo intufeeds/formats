@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CATALOGUE>
+    <PRODUCT VISIBLE="Y" NAME="Great Satin Dress" TRANSACTION="EXIST" ID="lwbiaca00012">
+        <SKU SIZE="8" VISIBLE="N" SKU="LWBIACA00012SIL000" NAME="Great Satin Dress" COLOUR="SILVER">
+            <DESCRIPTIONS>
+                <SHORT_DESCRIPTION>bibi alhaja</SHORT_DESCRIPTION>
+                <LONG_DESCRIPTION>Long description specific for this variation option</LONG_DESCRIPTION>
+            </DESCRIPTIONS>
+            <PRICES>
+                <SELL_PRICE LOCALITY_TYPE="TERRITORY" LOCALITY="GB" PRICE="105.00" CURRENCY="GBP" CHANNEL="ALL">105.00</SELL_PRICE>
+                <PRICE_ADJUSTMENT LOCALITY_TYPE="TERRITORY" LOCALITY="GB" CURRENCY="GBP" CHANNEL="ALL" START_DATE="201110170302" OFFER_TYPE="" END_DATE="201210170302">
+                    <ABSOLUTE>-28.00</ABSOLUTE>
+                </PRICE_ADJUSTMENT>
+            </PRICES>
+            <VAT_CODE>S</VAT_CODE>
+        </SKU>
+        <DESCRIPTIONS>
+            <SHORT_DESCRIPTION>bibi alhaja</SHORT_DESCRIPTION>
+            <LONG_DESCRIPTION>This is a long description which contains &lt; html encoded entities &gt;</LONG_DESCRIPTION>
+        </DESCRIPTIONS>
+        <MANUFACTURER>bibi alhaja</MANUFACTURER>
+        <KEYWORDS>bibi, alhaja, accessories, SILVER</KEYWORDS>
+        <ATTRIBUTE NAME="image1">http://www.example.com/images/Product/large/ACBABAS90009BLA1.jpg</ATTRIBUTE>
+        <ATTRIBUTE NAME="image2">http://www.example.com/images/Product/large/ACBABAS90009BLA2.jpg</ATTRIBUTE>
+        <ATTRIBUTE NAME="image3">http://www.example.com/images/Product/large/ACBABAS90009BLA3.jpg</ATTRIBUTE>
+        <ATTRIBUTE NAME="retailer_product_url">http://www.example.com/link-to-product-page.php</ATTRIBUTE>
+        <ATTRIBUTE NAME="product_category">Clothing/Dress,Ocassion/Night Out,New In/Spring</ATTRIBUTE>
+        <ATTRIBUTE NAME="Designers">BIBI</ATTRIBUTE>
+    </PRODUCT>
+    <PRODUCT ID="4412893270" NAME="SKINNY LONG SHORT" VISIBLE="Y" TRANSACTION="EXIST">
+        <SKU SKU="441289327006" NAME="SKINNY LONG SHORT" SIZE="6" COLOUR="LIGHT GREY" VISIBLE="N">
+            <DESCRIPTIONS>
+                <SHORT_DESCRIPTION>SKINNY LONG SHORT</SHORT_DESCRIPTION>
+                <LONG_DESCRIPTION>SKINNY LONG SHORT</LONG_DESCRIPTION>
+            </DESCRIPTIONS>
+            <PRICES>
+                <SELL_PRICE CURRENCY="GBP" LOCALITY_TYPE="TERRITORY" LOCALITY="GB" PRICE="35" CHANNEL="ALL">35</SELL_PRICE>
+            </PRICES>
+            <VAT_CODE>S</VAT_CODE>
+        </SKU>
+        <SKU SKU="441289327008" NAME="SKINNY LONG SHORT" SIZE="8" COLOUR="LIGHT GREY" VISIBLE="N">
+            <DESCRIPTIONS>
+                <SHORT_DESCRIPTION>SKINNY LONG SHORT</SHORT_DESCRIPTION>
+                <LONG_DESCRIPTION>A longer description of the skinny long short in light grey and size 8</LONG_DESCRIPTION>
+            </DESCRIPTIONS>
+            <PRICES>
+                <SELL_PRICE CURRENCY="GBP" LOCALITY_TYPE="TERRITORY" LOCALITY="GB" PRICE="35" CHANNEL="ALL">35</SELL_PRICE>
+            </PRICES>
+            <VAT_CODE>S</VAT_CODE>
+        </SKU>
+        <DESCRIPTIONS>
+            <SHORT_DESCRIPTION>SKINNY LONG SHORT</SHORT_DESCRIPTION>
+            <LONG_DESCRIPTION>SKINNY LONG SHORT</LONG_DESCRIPTION>
+        </DESCRIPTIONS>
+        <MANUFACTURER>FIDLI001</MANUFACTURER>
+        <KEYWORDS>shorts, long shorts, dior shorts</KEYWORDS>
+        <ATTRIBUTE NAME="image1">http://www.example.com/images/Product/large/SKINNY90009BLA1.jpg</ATTRIBUTE>
+        <ATTRIBUTE NAME="image2">http://www.example.com/images/Product/large/SKINNY90009BLA2.jpg</ATTRIBUTE>
+        <ATTRIBUTE NAME="image3">http://www.example.com/images/Product/large/SKINNY90009BLA3.jpg</ATTRIBUTE>
+        <ATTRIBUTE NAME="image3">http://www.example.com/images/Product/large/SKINNY90009BLA4.jpg</ATTRIBUTE>
+        <ATTRIBUTE NAME="retailer_product_url">http://www.example.com/p-skinny-short.php</ATTRIBUTE>
+        <ATTRIBUTE NAME="product_category">Clothing/Shorts,Brand/Dior,Sale</ATTRIBUTE>
+        <ATTRIBUTE NAME="Designers">Dior</ATTRIBUTE>        
+    </PRODUCT>
+</CATALOGUE>
