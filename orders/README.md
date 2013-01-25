@@ -36,7 +36,7 @@ request.
 ## Filtering collections
 
 Filtering the result collections is done using querystrings: 
-<pre> GET /orders/?incid=10002455 GET /orders/?status=pending 
+<pre>GET /orders/?incid=10002455 GET /orders/?status=pending 
 GET /returns/?from=2013-01-01&to=2013-01-15 </pre>
 
 You can use filters when editing resources: 
