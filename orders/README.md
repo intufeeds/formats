@@ -25,7 +25,8 @@ HTTP method + base url + resource url + [filters]
 
 Authenticate retailers by their credentials at the Magento backend.
 
-<pre> POST /auth/ 
+<pre> 
+POST /auth/ 
 {
     login: 'retailer_name',
     password: 'retailer_password'
