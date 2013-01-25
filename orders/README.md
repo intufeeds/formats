@@ -1,9 +1,10 @@
 # Order Integration
 
-  * Feature:
-  * JSON-based RESTful API for Retailers
-  * Aim:
-  * To give the retailers easy way to control their sales and inventory
+Feature:
+* JSON-based RESTful API for Retailers
+  
+Aim:
+* To give the retailers easy way to control their sales and inventory
 
 ## Resources to be available via API:
 
