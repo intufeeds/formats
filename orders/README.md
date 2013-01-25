@@ -65,8 +65,13 @@ wrong requests etc.
   * Response for wrong request*
 
 When the API cannot perform the request, it responds with the error flag and
-the error description(s): <pre> Status: 400 <code class="javacript"> { error:
-true, message: 'Wrong order status supplied' } </code> </pre>
+the error description(s): 
+<pre>Status: 400 <code class="javacript"> 
+    { 
+        error: true, 
+        message: 'Wrong order status supplied'
+    } 
+</code></pre>
 
 Or:
 
