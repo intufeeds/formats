@@ -26,29 +26,31 @@ HTTP method + base url + resource url + [filters]
 Authenticate retailers by their credentials at the Magento backend.
 
 <pre>POST /auth/ 
-{
-    login: 'retailer_name',
-    password: 'retailer_password'
-}
+    {
+        login: 'retailer_name',
+        password: 'retailer_password'
+    }
 </pre> The cookie is being set and it should be sent over with every API
 request.
 
 ## Filtering collections
 
 Filtering the result collections is done using querystrings: 
-<pre>GET /orders/?incid=10002455 GET /orders/?status=pending 
+<pre>GET /orders/?incid=10002455 
+GET /orders/?status=pending 
 GET /returns/?from=2013-01-01&to=2013-01-15 </pre>
 
 You can use filters when editing resources: 
 <pre>PUT /orders/?id=1047
-{
-status: "canceled"
-}
+    {
+    status: "canceled"
+    }
 </pre>
 
 You can use sets of values in filters. For example, if you want to get all
 orders with statuses "pending" and "processing", the querystring will look
-like <pre>GET /orders/?status=pending,processing</pre>
+like 
+<pre>GET /orders/?status=pending,processing</pre>
 
 See the list of available filters for orders and products in appropriate
 sections.
@@ -67,8 +69,12 @@ true, message: 'Wrong order status supplied' } </code> </pre>
 
 Or:
 
-<pre> Status: 400 <code class="javascript"> { error: true, message: ['Wrong
-order status supplied', 'Quantity could not be negative'] } </code> </pre>
+<pre> Status: 400 <code class="javascript"> 
+    { 
+        error: true, 
+        message: ['Wrong order status supplied', 'Quantity could not be negative'] 
+    } 
+    </code> </pre>
 
 ## Working with orders
 
@@ -94,7 +100,7 @@ order status supplied', 'Quantity could not be negative'] } </code> </pre>
 <pre>GET /orders/</pre> 
 
 returns: <pre>Status: 200 <code class="javascript"> 
-[
+    [
     {
         id: 1074,
         increment_id: '100000546',
@@ -177,7 +183,7 @@ returns: <pre>Status: 200 <code class="javascript">
 ### Changing the status:
 
 <pre>PUT /orders/?id=1047 <code class="javascript">
-{ 
+    { 
     status: "shipped" 
     } </code></pre>
 Returns: <pre> Status:
@@ -194,7 +200,7 @@ Returns: <pre> Status:
 
 All refunds so far: <pre>GET /refunds/</pre> Returns: <pre> Status: 200 <code
 class="javascript"> 
-[
+    [
     {
         id: 210,
         order_id: 1098,
@@ -219,11 +225,12 @@ class="javascript">
     }
 ] </code></pre>
 
-Refunds filtered (??? needed ???): <pre> GET /refunds/?id=210 GET
-/refunds/?from=2013-01-01&to=2013-02-01 </pre>
+Refunds filtered: 
+<pre>GET /refunds/?id=210 
+GET /refunds/?from=2013-01-01&to=2013-02-01 </pre>
 
-Items refund: <pre> POST /refunds/ <code
-class="javascript">{
+Items refund: <pre> POST /refunds/ <code class="javascript">
+    {
     order_id: 1098,
     items: [
         {
@@ -232,7 +239,8 @@ class="javascript">{
             refund_reason: 'out of stock'
         }
     ]
-} </code></pre>
+    }
+</code></pre>
 
 ### Deliveries
 
@@ -244,8 +252,11 @@ class="javascript">{
   * Date: to (YYYY-MM-DD) (GET /deliveries/?to=2013-01-29) - returns deliveries created before given date
   * Date combined (GET /deliveries/?from=2013-01-28&to=2013-01-29) - returns deliveries for the given interval
 
-All deliveries: <pre>GET /deliveries/</pre> Returns: <pre> Status: 200 <code
-class="javascript"> [
+All deliveries: 
+<pre>GET /deliveries/</pre> 
+Returns: 
+<pre>Status: 200 <code class="javascript"> 
+    [
     {
         order_id: 1079,
         increment_id: 10000079,
@@ -270,11 +281,12 @@ class="javascript"> [
             }
         ]
     }
-] </code> </pre>
+    ] 
+</code> </pre>
 
-Creating delivery: <pre> POST /deliveries/ <code
-class="javascript">
-{
+Creating delivery: 
+<pre>POST /deliveries/ <code class="javascript">
+    {
     order_id: 1098,
     items: [
         {
@@ -282,11 +294,18 @@ class="javascript">
             qty: 1 // the quantity of items to deliver
         }
     ]
-} </pre> Returns: <pre> Status: 201 <code class="javascript">
-{id: 561} </code></pre>
+    } 
+</pre>
+Returns: 
+<pre> Status: 201 <code class="javascript">
+    {
+    id: 561
+    } 
+</code></pre>
 
-Adding/removing tracking information: <pre> PUT /deliveries/?id=561 <code
-class="javascript">{
+Adding/removing tracking information: 
+<pre>PUT /deliveries/?id=561 <code class="javascript">
+    {
     add_tracks: [
         {
             track_number: 'FEDEX-34AA-DF',
@@ -295,7 +314,10 @@ class="javascript">{
         }
     ],
     remove_tracks: [314] // the array of tracking number IDs
-}</code> </pre> Returns: <pre> Status: 200 </pre>_
+    }
+</code> </pre> 
+Returns: 
+<pre>Status: 200 </pre>
 
 ## Working with products
 
@@ -325,8 +347,10 @@ class="javascript">{
 
 ### Products list
 
-<pre>GET /products/</pre> returns: <pre> Status: 200 <code class="javascript">
-[
+<pre>GET /products/</pre> 
+Returns: 
+<pre>Status: 200 <code class="javascript">
+    [
     {
         id: 1245,
         sku: 'ER567-UG',
@@ -367,42 +391,57 @@ class="javascript">{
             }
         ]
     }
-]
-
-</code> </pre>
+    ]
+</code></pre>
 
 ### Getting the product by sku or ID:
 
-<pre> GET /products/?sku=SKU3333 GET /products/?id=254778 </pre> Returns:
-<pre> Status: 200 </pre> Response body has the same format as in Products list
+<pre>GET /products/?sku=SKU3333 
+GET /products/?id=254778 </pre> 
+Returns:
+<pre>Status: 200 </pre> Response body has the same format as in Products list
 
 ### Editing Products:
 
-Change the name and description for the product #1245: <pre> PUT
-/products?id=1245 <code class="javascript">{
-    name: "new Product name",
-    description: "new description" 
-}</code>
-</pre> Returns: <pre>Status: 200</pre>
+Change the name and description for the product #1245: 
+<pre>PUT /products?id=1245 <code class="javascript">
+    {
+        name: "new Product name",
+        description: "new description" 
+    }
+</code></pre> 
+Returns: 
+<pre>Status: 200</pre>
 
 ### Disabling the product:
 
-Disable the product #1247: <pre>PUT /products/?id=1247 <code class="javascript">
-{
-    status: 'disabled'
-}</code></pre> Returns: <pre>Status: 200</pre>
+Disable the product #1247: 
+<pre>PUT /products/?id=1247 
+<code class="javascript">
+    {
+        status: 'disabled'
+    }
+</code></pre> Returns: <pre>Status: 200</pre>
 
 ### Stock management:
 
-Set quantity=5 for the product #1246: <pre> PUT /products/?id=1246 <code class="javascript">
-{
+Set quantity=5 for the product #1246: 
+<pre>PUT /products/?id=1246 <code class="javascript">
+    {
     stock_item: {
         qty: 5
     }
-}</code></pre> Returns: <pre>Status: 200</pre>
+}</code></pre> 
+Returns: 
+<pre>Status: 200</pre>
 
-Making product #1247 out of stock: <pre> PUT /products/?id=1247 <code class="javascript">{
+Making product #1247 out of stock: 
+<pre>PUT /products/?id=1247 <code class="javascript">
+    {
     stock_item: {
         in_stock: false
+        }
     }
-}</code></pre> Returns: <pre>Status: 200</pre>
+</code></pre> 
+Returns: 
+<pre>Status: 200</pre>
