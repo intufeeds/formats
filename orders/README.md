@@ -40,8 +40,10 @@ Filtering the result collections is done using querystrings:
 GET /returns/?from=2013-01-01&to=2013-01-15 </pre>
 
 You can use filters when editing resources: 
-<pre>PUT /orders/?id=1047 {status:
-"canceled"}
+<pre>PUT /orders/?id=1047
+{
+status: "canceled"
+}
 </pre>
 
 You can use sets of values in filters. For example, if you want to get all
@@ -91,7 +93,7 @@ order status supplied', 'Quantity could not be negative'] } </code> </pre>
 
 <pre>GET /orders/</pre> 
 
-returns: <pre> Status: 200 <code class="javascript"> 
+returns: <pre>Status: 200 <code class="javascript"> 
 [
     {
         id: 1074,
@@ -174,10 +176,10 @@ returns: <pre> Status: 200 <code class="javascript">
 
 ### Changing the status:
 
-<pre> PUT /orders/?id=1047 
- <code
-class="javascript">{ 
- status: "shipped" } </code></pre>
+<pre>PUT /orders/?id=1047 <code class="javascript">
+{ 
+    status: "shipped" 
+    } </code></pre>
 Returns: <pre> Status:
 200 </pre>
 
