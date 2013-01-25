@@ -21,7 +21,7 @@ ORM. RESTfulness is archieved via Zend_Rest_Controller and Zend_Rest_Route.
 
 HTTP method + base url + resource url + [filters]
 
-## Authentification
+## Authentication
 
 Authenticate retailers by their credentials at the Magento backend.
 
