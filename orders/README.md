@@ -44,7 +44,7 @@ GET /returns/?from=2013-01-01&to=2013-01-15 </pre>
 You can use filters when editing resources: 
 <pre>PUT /orders/?id=1047
     {
-    status: "canceled"
+        status: "canceled"
     }
 </pre>
 
@@ -70,12 +70,12 @@ true, message: 'Wrong order status supplied' } </code> </pre>
 
 Or:
 
-<pre> Status: 400 <code class="javascript"> 
+<pre>Status: 400 <code class="javascript"> 
     { 
         error: true, 
         message: ['Wrong order status supplied', 'Quantity could not be negative'] 
     } 
-    </code> </pre>
+</code></pre>
 
 ## Working with orders
 
