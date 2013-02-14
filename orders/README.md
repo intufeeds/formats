@@ -6,6 +6,8 @@ Feature:
 Aim:
 * To give the retailers easy way to control their sales and inventory
 
+* Version 0.9
+
 ## Resources to be available via API:
 
   * orders, filtered by retailer (managing statuses) (example.com/orders)
