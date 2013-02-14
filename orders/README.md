@@ -6,7 +6,7 @@ Feature:
 Aim:
 * To give the retailers easy way to control their sales and inventory
 
-* Version 0.9
+Version: 0.9
 
 ## Resources to be available via API:
 
