@@ -18,7 +18,7 @@ Version: 0.9
 ## Integration
 
 The API is created as a magento module hence having the full access to Magento
-ORM. RESTfulness is archieved via Zend_Rest_Controller and Zend_Rest_Route.
+ORM.
 
 ## URL build rules
 
@@ -33,22 +33,23 @@ Authenticate retailers by their credentials at the Magento backend.
         login: 'retailer_name',
         password: 'retailer_password'
     }
-</pre> The cookie is being set and it should be sent over with every API
-request.
+</pre> 
+
+Response:
+
+<pre>
+HTTP/1.1 201 Created
+Set-Cookie: PHPSESSID=6d8552f81fbcc7f64de90d563807f5ee
+</pre>
+
+Which means that the cookie is set and it should be sent over with every API request. 
 
 ## Filtering collections
 
 Filtering the result collections is done using querystrings: 
-<pre>GET /orders/?incid=10002455 
-GET /orders/?status=pending 
-GET /returns/?from=2013-01-01&to=2013-01-15 </pre>
-
-You can use filters when editing resources: 
-<pre>PUT /orders/?id=1047
-    {
-        status: "canceled"
-    }
-</pre>
+<pre>GET /orders/?increment_id=10002455
+GET /orders/?status=pending
+GET /returns/?from=2013-01-01%2000:00:00&to=2013-01-15%2000:00:00 </pre>
 
 You can use sets of values in filters. For example, if you want to get all
 orders with statuses "pending" and "processing", the querystring will look
@@ -68,20 +69,13 @@ wrong requests etc.
 
 When the API cannot perform the request, it responds with the error flag and
 the error description(s): 
-<pre>Status: 400
-    { 
-        error: true, 
-        message: 'Wrong order status supplied'
-    } 
-</pre>
-
-Or:
-
-<pre>Status: 400
-    { 
-        error: true, 
-        message: ['Wrong order status supplied', 'Quantity could not be negative'] 
-    } 
+<pre>
+Status: 400
+{
+    error_code: 123,
+    message: "Wrong order status supplied" 
+}
+    
 </pre>
 
 ## Working with orders ##
@@ -188,15 +182,7 @@ returns: <pre>Status: 200
 ]
 </pre>
 
-### Changing the status:
-
-<pre>PUT /orders/?id=1047
-    { 
-    status: "shipped" 
-    }
-</pre>
-Returns: <pre> Status:
-200 </pre>
+Items are configurable products, if any. Use item_id to refer to an item when creating the refund or delivery. 
 
 ### Refunds
 
@@ -234,20 +220,28 @@ All refunds so far: <pre>GET /refunds/</pre> Returns: <pre>Status: 200
     ] </pre>
 
 Refunds filtered: 
-<pre>GET /refunds/?id=210 
+<pre>GET /refunds/?order_id=820
 GET /refunds/?from=2013-01-01&to=2013-02-01 </pre>
 
-Items refund: <pre> POST /refunds/
-    {
+Items refund: <pre> POST /refunds/ {
     order_id: 1098,
+    comment: "Some comment",
     items: [
         {
             item_id: 3516, // the item id within the order
             qty: 1,    // QTY to refund
-            refund_reason: 'out of stock'
+            refund_reason: "out of stock" 
         }
     ]
-    }
+}
+
+</pre>
+
+returns
+
+<pre>
+Status: 201
+{id: 210}
 </pre>
 
 ### Deliveries
@@ -457,3 +451,45 @@ Making product 1247 out of stock:
 </pre> 
 Returns: 
 <pre>Status: 200</pre>
+
+## Error Codes:
+
+The error code has the following format:
+**XYZ**, where
+**X** - a digit representing the resource: 
+
+|**digit**|**resource**|
+|---------|------------|
+| |core|
+|1|order|
+|2|product|
+|3|refund|
+|4|delivery|
+|5|resource-wide|
+
+**Y** - error type
+
+|**digit**|**description**|
+|---------|---------------|
+|1|validation error|
+|2|valid but unacceptable|
+
+|**Error Code**|**Short Description**|**Detailed Information**|**HTTP Status Code**|
+|--------------|---------------------|------------------------|--------------------|
+|11|Unauthorised access - please authentificate first|You should POST your credentials to /auth first|401|
+|12|Wrong username/password combination|Please check your credentials|400|
+|311|Wrong data format|order_id or items are required to create a refund|400|
+|210|Empty request|No data during request, or broken in json structure|400|
+|211|Validation error at: field_name|Incorrect data to the field provided|400|
+|217|Invalid request|The field required to update is not exist or allowed|400|
+|312|Cannot create a credit memo for this order|Order is either closed, canceled, already refunded or the payment is in the "Payment review" status|400|
+|314|Unknown refund reason (reason)|Provided refund reason is not valid (see http:// for the list)|400|
+|413|Missing data|order_id or items are required to create delivery|400|
+|414|Wrong data format|order_id should be a numeric and items - an array|400|
+|417|Invalid request|The request should contain either add_tracks or remove_tracks|400|
+|418|Tracking number ({id}) not found|Check the track IDs for existence|400|
+|421|Order not found|The supplied order_id does not exist|400|
+|422|Cannot do shipment for the order|Cannot do shipment for the order|400|
+|511|The ID should be integer|The supplied ID should be integer|400|
+
+
