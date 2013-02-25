@@ -1,4 +1,4 @@
-# Order Integration
+# Intu.co.uk Integration
 
 Feature:
 * JSON-based RESTful API for Retailers
