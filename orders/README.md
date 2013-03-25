@@ -795,6 +795,7 @@ X - a digit representing the resource:
 | 6     | comments|
 
 Y - error type
+
 | *digit* | *description* | *HTTP code* |
 |---------|---------------|-------------|
 | 1     | validation error       | |
